@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
 
 @Component({
   selector: 'app-heroes',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
+  isSpecial = true;
+  isTest = true;
+  /*
+  hero = {
+    id: 1,
+    name: 'winstorm'
+  }
+  */
+  hero: Hero = {
+    id: 1,
+    name: 'Winstorm'
+  };
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSave(event: any) {
+    console.log(event);
   }
 
 }
