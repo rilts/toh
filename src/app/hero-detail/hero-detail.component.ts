@@ -23,4 +23,8 @@ export class HeroDetailComponent implements OnInit {
     });
   }
 
+  goBack() {
+    history.back();
+  }
+
 }

@@ -13,9 +13,11 @@ import { RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'heroes', component: HeroesComponent},
+  {path: 'heroes', component: HeroesComponent, children:[
+    {path: 'detail/:hero_id', component: HeroDetailComponent},
+    ]},
   {path: 'todo', component: TodoComponent},
-  {path: 'detail/:hero_id', component: HeroDetailComponent},
+  /*{path: 'detail/:hero_id', component: HeroDetailComponent},*/
 ];
 
 @NgModule({

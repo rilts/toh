@@ -1,3 +1,14 @@
 <p>
   home works!
 </p>
+<h2>{{ nHero.name }} Details</h2>
+<div><span>id: </span>{{nHero.id}}</div>
+<div><span>name: </span>{{nHero.name}}</div>
+<div><label>name:
+  <input [(ngModel)]="nHero.name" placeholder="name">
+</label></div>
+<div><button [disabled]="isSpecial">property binding button</button></div>
+<div><button class="test" [class.special]="isSpecial" [class.on]="isTest">property binding button</button></div>
+<div><button [style.color]="isSpecial ? 'red':'green'">property binding button</button></div>
+
+<div><button (click)="onSave($event)">event binding save button</button></div>
