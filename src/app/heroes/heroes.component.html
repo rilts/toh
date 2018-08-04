@@ -7,20 +7,12 @@
 
 <h2>My Heros</h2>
 <ul>
-  <li class="d-flex m-1" *ngFor="let hero of heroes" (click)="onSelect(hero)">
+  <li [class.selected]="hero===selectedHero" class="d-flex m-1" *ngFor="let hero of heroes" (click)="onSelect(hero)">
     <span class="rounded-left p-2 bg-primary text-light">{{hero.id}}</span>
     <div class="rounded-right p-2 bg-light text-dark w-50">{{hero.name}}</div>
   </li>
 </ul>
-<div *ngIf="selectedHero">
-<h2>{{ selectedHero.name | uppercase }} Details</h2>
-<div><span>id: </span>{{selectedHero.id}}</div>
-<div><span>name: </span>{{selectedHero.name}}</div>
-<div><label>name:
-  <input [(ngModel)]="selectedHero.name" placeholder="name">
-</label></div>
-</div>
-<br><br>
+<app-hero-detail [selectedHero]="selectedHero"></app-hero-detail>
 <div><button [disabled]="isSpecial">property binding button</button></div>
 <div><button class="test" [class.special]="isSpecial" [class.on]="isTest">property binding button</button></div>
 <div><button [style.color]="isSpecial ? 'red':'green'">property binding button</button></div>
