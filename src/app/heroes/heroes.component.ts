@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import {NavigationStart, Router} from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -17,7 +18,23 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService, private router: Router) {
+    this.heroService.refresh.subscribe(
+      data => {
+        console.log(data);
+        this.selectedHero = this.heroes.find(item => item.id === data ? true : false);
+      }
+    );
+
+    this.router.events.subscribe(events => {
+      if(events instanceof NavigationStart) {
+        console.log('navigation start :' + events.url);
+        if(events.url === '/heroes') {
+          this.selectedHero = null;
+        }
+      }
+    });
+  }
 
   ngOnInit() {
     /* 동기식 방식

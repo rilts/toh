@@ -20,6 +20,7 @@ export class HeroDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       console.log(params);
       this.heroService.getHero(+params["hero_id"]).subscribe(hero => this.selectedHero = hero);
+      this.heroService.refresh.next(+params["hero_id"]);
     });
   }
 

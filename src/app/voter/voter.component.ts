@@ -18,6 +18,7 @@ export class VoterComponent implements OnInit {
   vote(agree: boolean) {
     this.voted.emit(agree);
     this.didVote = true;
+  }
 
   constructor() { }
 

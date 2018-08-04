@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HEROES } from './mock-heroes';
 import { Hero } from './hero';
-import { Observable, of } from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import { Observable, of } from 'rxjs';
 export class HeroService {
 
   constructor() { }
+  refresh = new Subject<number>();
+  refresh$ = this.refresh.asObservable();
 /*
   getHeroes(): Hero[] {
     return HEROES;
