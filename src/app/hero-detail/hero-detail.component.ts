@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Hero} from '../hero';
+import {ActivatedRoute} from '@angular/router';
+import {HeroService} from '../hero.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -11,9 +13,14 @@ export class HeroDetailComponent implements OnInit {
   @Input()
   selectedHero: Hero;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private heroService: HeroService) {
+  }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params);
+      this.heroService.getHero(+params["hero_id"]).subscribe(hero => this.selectedHero = hero);
+    });
   }
 
 }
